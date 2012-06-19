@@ -64,18 +64,18 @@ Artikel zu löschen?</string>
     <string name="YES">Ja</string>
     <string name="NO">Nein</string>
     <string name="MENU_TOGGLE_SCALE_LABEL">Karten Maßstab</string>
-    <string name="MENU_SEND_TO_WIGLE">Sende wardrive.kml zu wigle</string>
+    <string name="MENU_SEND_TO_WIGLE">Sende wardrive.kml zur DB</string>
     <string name="MENU_WIGLE_ACCOUNT_SETTINGS">Wigle Account
 Einstellungen</string>
     <string name="WIGLE_ACCOUNT_DIALOG_TITLE">Wigle Account</string>
     <string name="WIGLE_ACCOUNT_DIALOG_USERNAME">Benutzername</string>
     <string name="WIGLE_ACCOUNT_DIALOG_PASSWORD">Passwort</string>
     <string name="MESSAGE_STARTING_SEND_TO_WIGLE">Sende tatsächlichen
-wardrive.kml zu wigle</string>
+wardrive.kml zur DB</string>
 	<string name="MESSAGE_SEND_TO_WIGLE_FILE_NOT_FOUND">"wardrive.kml" nicht
 gefunden. Exportieren Sie die Datei vor dem Senden.</string>
     <string name="MESSAGE_SEND_TO_WIGLE_ERROR">Fehler vom Server
 erhalten.</string>
-    <string name="MESSAGE_SEND_TO_WIGLE_OK">Fehlerfrei zu wigle
+    <string name="MESSAGE_SEND_TO_WIGLE_OK">Fehlerfrei zu DB
 hochgeladen.</string>
 </resources>
