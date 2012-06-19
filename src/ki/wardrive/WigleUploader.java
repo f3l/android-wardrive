@@ -82,6 +82,7 @@ public class WigleUploader
 					readbytes += ct;
 					msg = Message.obtain(message_handler, Constants.EVENT_WIGLE_UPLOAD_PROGRESS);
 					b = new Bundle();
+					// Use only 3/4 of the status to make the bar stop at 75% before server response
 					b.putInt(Constants.EVENT_WIGLE_UPLOAD_PROGRESS_PAR_COUNT, (int) readbytes/4*3);
 					b.putInt(Constants.EVENT_WIGLE_UPLOAD_PROGRESS_PAR_TOTAL, (int) filelength);
 					msg.setData(b);
@@ -99,6 +100,7 @@ public class WigleUploader
 				dis.close();
 				conn.disconnect();
 
+				// Server response recived: set progress-bar to 100%
 				msg = Message.obtain(message_handler, Constants.EVENT_WIGLE_UPLOAD_PROGRESS);
 				b = new Bundle();
 				b.putInt(Constants.EVENT_WIGLE_UPLOAD_PROGRESS_PAR_COUNT, (int) readbytes);
