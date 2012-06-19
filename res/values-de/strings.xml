@@ -14,37 +14,27 @@
     <string name="MENU_SHOW_CLOSED_LABEL">Geschlossen</string>
     <string name="MENU_OPTIONS_LABEL">Optionen</string>
     <string name="MENU_DELETE_LABEL">Lösche Alle</string>
-    <string name="MENU_DELETE_WARNING_LABEL">Dies löscht ALLE gesammelten
-Daten, fortfahren?</string>
+    <string name="MENU_DELETE_WARNING_LABEL">Dies löscht ALLE gesammelten Daten, fortfahren?</string>
     <string name="MENU_SERVICE_LABEL">Service An/Aus</string>
     <string name="MENU_KML_EXPORT_LABEL">Exportiere zu KML</string>
     <string name="MENU_SYNC_ONLINE_DB">Sende zur Online DB</string>
-    <string name="MENU_SYNC_ONLINE_DB_SEND_ALL_QUESTION">Sende alle WiFis?
-(Nein, wenn sie nur neue senden wollen)</string>
-    <string name="MENU_TOGGLE_NOTIFICATIONS_ENABLED">Benachrichtigungen
-aktivieren</string>
+    <string name="MENU_SYNC_ONLINE_DB_SEND_ALL_QUESTION">Sende alle WiFis? (Nein, wenn sie nur neue senden wollen)</string>
+    <string name="MENU_TOGGLE_NOTIFICATIONS_ENABLED">Benachrichtigungen aktivieren</string>
     <string name="MENU_CHANGE_GPS_SERVICE_TIMERS">GPS Zeiten</string>
     <string name="MENU_CHANGE_GPS_SERVICE_TIMERS_1">Kurz (3s, 3m)</string>
     <string name="MENU_CHANGE_GPS_SERVICE_TIMERS_2">Mittel (10s, 10m)</string>
     <string name="MENU_CHANGE_GPS_SERVICE_TIMERS_3">Lang (30s, 50m)</string>
     <string name="MESSAGE_STARTING_KML_EXPORT">Beginne KML Export...</string>
-    <string name="MESSAGE_STARTING_SYNC_ONLINE">Sende zur Online
-Datenbank...</string>
-    <string name="MESSAGE_SUCCESFULLY_EXPORTED_KML">KML Datei
-exportiert</string>
-    <string name="MESSAGE_SUCCESFULLY_SYNC_ONLINE">Senden an Datenbank
-vollständig, hoch geladene Artikel: </string>
+    <string name="MESSAGE_STARTING_SYNC_ONLINE">Sende zur Online Datenbank...</string>
+    <string name="MESSAGE_SUCCESFULLY_EXPORTED_KML">KML Datei exportiert</string>
+    <string name="MESSAGE_SUCCESFULLY_SYNC_ONLINE">Senden an Datenbank vollständig, hoch geladene Artikel: </string>
     <string name="MESSAGE_STATISTICS">Statistik:</string>
-    <string name="MESSAGE_STATISTICS_COUNT">\nGesammte WiFis in der DB:
-</string>
+    <string name="MESSAGE_STATISTICS_COUNT">\nGesammte WiFis in der DB: </string>
     <string name="MESSAGE_STATISTICS_OPEN">\nDavon offen: </string>
     <string name="MESSAGE_STATISTICS_CLOSED">\nDavon geschlossene: </string>
-    <string name="MESSAGE_STATISTICS_LASTAPP_TSTAMP">\nletztes mal
-Anwendung ausgeführt:</string>
-    <string name="MESSAGE_STATISTICS_LASTSERVICE_TSTAMP">\nletztes mal
-Service ausgeführt:</string>
-    <string name="MESSAGE_STATISTICS_NEW_WIFIS">\nNeue WiFi seit dem
-letzten ausführen:</string>
+    <string name="MESSAGE_STATISTICS_LASTAPP_TSTAMP">\nletztes mal Anwendung ausgeführt:</string>
+    <string name="MESSAGE_STATISTICS_LASTSERVICE_TSTAMP">\nletztes mal Service ausgeführt:</string>
+    <string name="MESSAGE_STATISTICS_NEW_WIFIS">\nNeue WiFi seit dem letzten ausführen:</string>
     <string name="SERVICE_STARTED">wardrive Service gestartet</string>
     <string name="SERVICE_STOPPED">wardrive Service gestoppt</string>
     <string name="GPS_ENABLED">GPS aktiviert</string>
@@ -53,29 +43,61 @@ letzten ausführen:</string>
     <string name="WIFI_FILTER_DIALOG_TITLE">WiFi Filter</string>
     <string name="WIFI_FILTER_DIALOG_FILTER_ENABLED">Filter Aktiviert</string>
     <string name="WIFI_FILTER_DIALOG_FILTER_INVERSE">Filter Umgekehrt</string>
-    <string name="WIFI_FILTER_DIALOG_FILTER_REGEXP">Filter regexp (java
-style)</string>
+    <string name="WIFI_FILTER_DIALOG_FILTER_REGEXP">Filter regexp (java style)</string>
     <string name="OK">Ok</string>
-    <string name="THIS_REGEXP_IS_AN_INVALID_ONE">ist ein ungültiger
-regexp</string>
+    <string name="THIS_REGEXP_IS_AN_INVALID_ONE">ist ein ungültiger regexp</string>
     <string name="MENU_LIST_ITEM_DELETE_LABEL">Löscht diesen Artikel</string>
-    <string name="LIST_ITEM_DELETE_CONFIRM">Sind Sie sicher, um diesen
-Artikel zu löschen?</string>
+    <string name="LIST_ITEM_DELETE_CONFIRM">Sind Sie sicher, um diesen Artikel zu löschen?</string>
     <string name="YES">Ja</string>
     <string name="NO">Nein</string>
     <string name="MENU_TOGGLE_SCALE_LABEL">Karten Maßstab</string>
     <string name="MENU_SEND_TO_WIGLE">Sende wardrive.kml zur DB</string>
-    <string name="MENU_WIGLE_ACCOUNT_SETTINGS">Wigle Account
-Einstellungen</string>
-    <string name="WIGLE_ACCOUNT_DIALOG_TITLE">Wigle Account</string>
+    <string name="MENU_WIGLE_ACCOUNT_SETTINGS">DB Account Einstellungen</string>
+    <string name="WIGLE_ACCOUNT_DIALOG_TITLE">DB Account</string>
     <string name="WIGLE_ACCOUNT_DIALOG_USERNAME">Benutzername</string>
     <string name="WIGLE_ACCOUNT_DIALOG_PASSWORD">Passwort</string>
-    <string name="MESSAGE_STARTING_SEND_TO_WIGLE">Sende tatsächlichen
-wardrive.kml zur DB</string>
-	<string name="MESSAGE_SEND_TO_WIGLE_FILE_NOT_FOUND">"wardrive.kml" nicht
-gefunden. Exportieren Sie die Datei vor dem Senden.</string>
-    <string name="MESSAGE_SEND_TO_WIGLE_ERROR">Fehler vom Server
-erhalten.</string>
-    <string name="MESSAGE_SEND_TO_WIGLE_OK">Fehlerfrei zu DB
-hochgeladen.</string>
+    <string name="MESSAGE_STARTING_SEND_TO_WIGLE">Sende tatsächlichen wardrive.kml zur DB</string>
+	<string name="MESSAGE_SEND_TO_WIGLE_FILE_NOT_FOUND">"wardrive.kml" nicht gefunden. Exportieren Sie die Datei vor dem Senden.</string>
+    <string name="MESSAGE_SEND_TO_WIGLE_ERROR">Fehler vom Server erhalten.</string>
+    <string name="MESSAGE_SEND_TO_WIGLE_OK">Fehlerfrei zu DB hochgeladen.</string>
+	<string name="OVERLAY_SERVICE_ON">Service: ON</string>
+	<string name="OVERLAY_SERVICE_OFF">Service: OFF</string>
+	<string name="KML_EXPORT_EXPORT_ALL_QUESTION">Export all WiFis?</string>
+	
+	<!-- Preferences activity -->
+	<string name="layout_preferences_group_scanning">Scanning</string>
+	<string name="layout_preferences_gpsScanInterval">GPS Zeiten</string>
+	<string name="layout_preferences_gpsScanInterval_detail">In welchen Abständen soll nach WiFi Netzwerken gesucht werden?</string>
+	<string-array name="layout_preferences_gpsScanInterval_labels">
+		<item>Kurz(3s, 3m)</item>
+		<item>Mittel (10s, 10m)</item>
+		<item>Lang (30s, 50m)</item>
+	</string-array>
+	<string-array name="layout_preferences_gpsScanInterval_values">
+		<item>0</item>
+		<item>1</item>
+		<item>2</item>
+	</string-array>
+	<string name="layout_preferences_group_wigleSettings">Wardrive Account Einstellungen</string>
+	<string name="layout_preferences_wigleUpload_accountDetails_username">Benutzername</string>
+	<string name="layout_preferences_wigleUpload_accountDetails_password">Passwort</string>
+	<string name="layout_preferences_group_mapOptions">Karten Einstellungen</string>
+	<string name="layout_preferences_wifiFilterEnabled">WiFi Filter aktiviert</string>
+	<string name="layout_preferences_wifiFilter">WiFi Filter Regexp</string>
+	<string name="layout_preferences_wifiFilter_detail">Filter regexp (Java Stil)</string>
+	<string name="layout_preferences_wifiFilterInverted">WiFi Filter invertiert</string>
+	<string name="layout_preferences_mapScale">Zeige Maßstab</string>
+	<string name="layout_preferences_mapSat">Satelliten Karte</string>
+	<string name="layout_preferences_followMe">Folge meiner Position</string>
+	<string name="layout_preferences_showAPLabels">Zeige AP Labels</string>
+	<string name="layout_preferences_showOpenAPs">Zeige offene</string>
+	<string name="layout_preferences_showClosedAPs">Zeige geschlossene</string>
+	<string name="layout_preferences_showWEPAPs">Zeige WEP</string>
+	<string name="layout_preferences_group_exportingAndOther">Export und Sonstiges</string>
+	<string name="layout_preferences_kmlExportPath">KML Export Pfad</string>
+	<string name="layout_preferences_notificationsEnabled">Benachrichtigung aktiviert</string>
+	<string name="layout_preferences_gpsValidAccuracy">GPS Genauigkeit</string>
+	<string name="layout_preferences_gpsValidAccuracy_description">Wenn die GPS Genauigkeit nicht präzise genug ist, werden WiFis NICHT gesichert.</string>
+	<string name="layout_preferences_wifiValidStrength">WiFi Signalstärke</string>
+	<string name="layout_preferences_wifiValidStrength_description">Wenn die Signalstärke geringer als angegeben ist, werden WiFis NICHT gesichert.</string>
 </resources>

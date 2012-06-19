@@ -52,8 +52,8 @@
     <string name="NO">No</string>
     <string name="MENU_TOGGLE_SCALE_LABEL">Map scale</string>
     <string name="MENU_SEND_TO_WIGLE">Send wardrive.kml to DB</string>
-    <string name="MENU_WIGLE_ACCOUNT_SETTINGS">Wigle account settings</string>
-    <string name="WIGLE_ACCOUNT_DIALOG_TITLE">Wigle account</string>
+    <string name="MENU_WIGLE_ACCOUNT_SETTINGS">DB account settings</string>
+    <string name="WIGLE_ACCOUNT_DIALOG_TITLE">DB account</string>
     <string name="WIGLE_ACCOUNT_DIALOG_USERNAME">Username</string>
     <string name="WIGLE_ACCOUNT_DIALOG_PASSWORD">Password</string>
     <string name="MESSAGE_STARTING_SEND_TO_WIGLE">Sending actual wardrive.kml to DB</string>
