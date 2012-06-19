@@ -124,9 +124,9 @@ public class Main extends MapActivity implements LocationListener
 
 	public boolean show_open = true;
 
-	public boolean show_closed = false;
+	public boolean show_closed = true;
 	
-	public boolean show_wep = false;
+	public boolean show_wep = true;
 	
 	public boolean show_scale = false;
 
@@ -146,6 +146,8 @@ public class Main extends MapActivity implements LocationListener
 	
 	private ProgressDialog wigleProgressDialog;
 	
+	private String wigle_url = null;
+
 	private String wigle_username = null;
 	
 	private String wigle_password = null;
@@ -207,11 +209,12 @@ public class Main extends MapActivity implements LocationListener
 		show_labels = prefs.getBoolean("showAPLabels", true);
 		follow_me = prefs.getBoolean("followMe", true);
 		show_open = prefs.getBoolean("showOpenAPs", true);
-		show_closed = prefs.getBoolean("showClosedAPs", false);
-		show_wep = prefs.getBoolean("showWEPAPs", false);
+		show_closed = prefs.getBoolean("showClosedAPs", true);
+		show_wep = prefs.getBoolean("showWEPAPs", true);
         show_scale = prefs.getBoolean("mapScale", show_scale);
 		map_sat = prefs.getBoolean("mapSat", false);
 		notifications_enabled = prefs.getBoolean("notificationsEnabled", false);
+        wigle_url = prefs.getString("wigleUrl", "http://wardrive.f3l.de/cgi-bin/upload.py");
         wigle_username = prefs.getString("wigleUsername", "");
         wigle_password = prefs.getString("wiglePassword", "");
         kml_export_path = prefs.getString("kmlExportPath", "");
@@ -575,7 +578,7 @@ public class Main extends MapActivity implements LocationListener
 				return;
 			}
 			
-			if (WigleUploader.upload(Main.this.wigle_username, Main.this.wigle_password, f, message_handler))
+			if (WigleUploader.upload(Main.this.wigle_username, Main.this.wigle_password, Main.this.wigle_url, f, message_handler))
 			{
 				sending_wigle = false;
 				message_handler.sendMessage(Message.obtain(message_handler, Constants.EVENT_SEND_TO_WIGLE_OK));

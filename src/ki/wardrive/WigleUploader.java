@@ -26,6 +26,7 @@ import java.io.FileInputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.logging.Logger;
+import android.util.Base64;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -35,15 +36,13 @@ public class WigleUploader
 {
 	private static Object LOCK = new Object();
 	
-	private static final String _URL = "http://www.wigle.net/gps/gps/main/confirmfile/";
-	
 	private static final String BOUNDARY = "----MultiPartBoundary";
 	
 	private static final String NL = "\r\n";
 
-	public static boolean upload(String username, String password, File file, Handler message_handler)
+	public static boolean upload(String username, String password, String dburl, File file, Handler message_handler)
 	{
-		if (username == null || username.length() == 0 || password == null || password.length() == 0)
+		if (username == null || username.length() == 0 || password == null || password.length() == 0 || dburl == null || dburl.length() == 0)
 			return false;
 		
 		synchronized (LOCK)
@@ -52,20 +51,20 @@ public class WigleUploader
 			{
 				Message msg;
 				Bundle b;
-		        URL url = new URL(_URL);
+		        URL url = new URL(dburl);
 		        HttpURLConnection conn = (HttpURLConnection)url.openConnection();
 		    	conn.setDoInput(true);
 		    	conn.setDoOutput(true);
 		    	conn.setUseCaches(false);
-		    	conn.setChunkedStreamingMode(1);
 		    	conn.setRequestMethod("POST");
 		    	conn.setRequestProperty("User-Agent","wardrive");
+			String usernamePassword = username + ":" + password;
+			String encodedUsernamePassword = Base64.encodeToString(usernamePassword.getBytes(), Base64.DEFAULT | Base64.NO_WRAP);
+			conn.setRequestProperty("Authorization", "Basic " + encodedUsernamePassword);
 		    	conn.setRequestProperty("Content-Type","multipart/form-data;boundary="+BOUNDARY);
 		    	conn.connect();
 		    	DataOutputStream dos = new DataOutputStream(conn.getOutputStream());
-		    	dos.writeBytes("--"+BOUNDARY+NL+"Content-Disposition: form-data; name=\"observer\""+NL+NL+username+NL);
-		    	dos.writeBytes("--"+BOUNDARY+NL+"Content-Disposition: form-data; name=\"password\""+NL+NL+password+NL);
-		    	dos.writeBytes("--"+BOUNDARY+NL+"Content-Disposition: form-data; name=\"stumblefile\";filename=\"wardrive.kml\""+NL+"Content-Type: application/octet-stream"+NL+NL);
+			dos.writeBytes("--"+BOUNDARY+NL+"Content-Disposition: form-data; name=\"file\";filename=\"wardrive.kml\""+NL+"Content-Type: application/octet-stream"+NL+NL);
 		    	int ct;
 		    	long readbytes = 0;
 		    	long filelength = file.length();
@@ -80,13 +79,13 @@ public class WigleUploader
 		    		readbytes += ct;
 		    		msg = Message.obtain(message_handler, Constants.EVENT_WIGLE_UPLOAD_PROGRESS);
 					b = new Bundle();
-					b.putInt(Constants.EVENT_WIGLE_UPLOAD_PROGRESS_PAR_COUNT, (int) readbytes);
+					b.putInt(Constants.EVENT_WIGLE_UPLOAD_PROGRESS_PAR_COUNT, (int) readbytes/4*3);
 					b.putInt(Constants.EVENT_WIGLE_UPLOAD_PROGRESS_PAR_TOTAL, (int) filelength);
 					msg.setData(b);
 					message_handler.sendMessage(msg);
 		    	}
 		    	fis.close();
-		    	dos.writeBytes(NL+"--"+BOUNDARY+NL+"Content-Disposition: form-data; name=\"Send\""+NL+NL+"Send");
+			//dos.writeBytes(NL+"--"+BOUNDARY+NL+"Content-Disposition: form-data; name=\"Send\""+NL+NL+"Send");
 		    	dos.writeBytes(NL+"--"+BOUNDARY+"--"+NL);
 		    	dos.flush();
 		    	dos.close();
@@ -95,8 +94,16 @@ public class WigleUploader
 		    	ct = dis.read(data);
 		    	dis.close();
 		    	conn.disconnect();
+
+			msg = Message.obtain(message_handler, Constants.EVENT_WIGLE_UPLOAD_PROGRESS);
+			b = new Bundle();
+			b.putInt(Constants.EVENT_WIGLE_UPLOAD_PROGRESS_PAR_COUNT, (int) readbytes);
+			b.putInt(Constants.EVENT_WIGLE_UPLOAD_PROGRESS_PAR_TOTAL, (int) filelength);
+			msg.setData(b);
+			message_handler.sendMessage(msg);
+
 		    	String response = new String(data, 0, ct);
-	    		return response.indexOf("uploaded successfully") != -1;
+			return response.indexOf("UPLOAD DONE") != -1;
 			}
 			catch (Exception e)
 			{

@@ -24,6 +24,11 @@
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/layout_preferences_group_wigleSettings">
 		<EditTextPreference
+			android:title="@string/layout_preferences_wigleUpload_accountDetails_url"
+			android:key="wigleUrl"
+			android:defaultValue="http://wardrive.f3l.de/cgi-bin/upload.py"
+		/>
+		<EditTextPreference
 			android:title="@string/layout_preferences_wigleUpload_accountDetails_username"
         	android:key="wigleUsername"
 		/>
@@ -68,15 +73,17 @@
 		<CheckBoxPreference
 			android:title="@string/layout_preferences_showOpenAPs"
         	android:key="showOpenAPs"
-        	android:defaultValue="true"
+		android:defaultValue="true"
 		/>
 		<CheckBoxPreference
 			android:title="@string/layout_preferences_showClosedAPs"
         	android:key="showClosedAPs"
+		android:defaultValue="true"
 		/>
 		<CheckBoxPreference
 			android:title="@string/layout_preferences_showWEPAPs"
         	android:key="showWEPAPs"
+		android:defaultValue="true"
 		/>
 	</PreferenceCategory>
 	<PreferenceCategory android:title="@string/layout_preferences_group_exportingAndOther">

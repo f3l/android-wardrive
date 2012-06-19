@@ -70,14 +70,14 @@ Enhancement patches from:\n
     <string name="LIST_ITEM_DELETE_CONFIRM">Are you sure to delete this item?</string>
     <string name="YES">Yes</string>
     <string name="NO">No</string>
-    <string name="MENU_SEND_TO_WIGLE">Send saved wardrive.kml to wigle</string>
-    <string name="WIGLE_ACCOUNT_DIALOG_TITLE">Wigle account</string>
+    <string name="MENU_SEND_TO_WIGLE">Send saved wardrive.kml to DB</string>
+    <string name="WIGLE_ACCOUNT_DIALOG_TITLE">Wardrive account</string>
     <string name="WIGLE_ACCOUNT_DIALOG_USERNAME">Username</string>
     <string name="WIGLE_ACCOUNT_DIALOG_PASSWORD">Password</string>
-    <string name="MESSAGE_STARTING_SEND_TO_WIGLE">Sending actual wardrive.kml to wigle</string>
+    <string name="MESSAGE_STARTING_SEND_TO_WIGLE">Sending actual wardrive.kml to DB</string>
 	<string name="MESSAGE_SEND_TO_WIGLE_FILE_NOT_FOUND">"wardrive.kml" not found. Export the file before sending.</string>
     <string name="MESSAGE_SEND_TO_WIGLE_ERROR">Error received from server.</string>
-    <string name="MESSAGE_SEND_TO_WIGLE_OK">Uploaded correctly to wigle.</string>
+    <string name="MESSAGE_SEND_TO_WIGLE_OK">Uploaded correctly to DB.</string>
 	<string name="MENU_KML_EXPORT_PATH">KML Export Path</string>
 	<string name="KML_EXPORT_PATH_DIALOG_ERROR">Invalid path specified.</string>
 	<string name="OVERLAY_SERVICE_ON">Service: ON</string>
@@ -100,7 +100,8 @@ Enhancement patches from:\n
 		<item>1</item>
 		<item>2</item>
 	</string-array>
-	<string name="layout_preferences_group_wigleSettings">WiGLE account settings</string>
+	<string name="layout_preferences_group_wigleSettings">Wardrive account settings</string>
+	<string name="layout_preferences_wigleUpload_accountDetails_url">URL</string>
 	<string name="layout_preferences_wigleUpload_accountDetails_username">Username</string>
 	<string name="layout_preferences_wigleUpload_accountDetails_password">Password</string>
 	<string name="layout_preferences_group_mapOptions">Map options</string>
