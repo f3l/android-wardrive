@@ -100,7 +100,7 @@ public class WigleUploader
 				dis.close();
 				conn.disconnect();
 
-				// Server response recived: set progress-bar to 100%
+				// Server response received: set progress-bar to 100%
 				msg = Message.obtain(message_handler, Constants.EVENT_WIGLE_UPLOAD_PROGRESS);
 				b = new Bundle();
 				b.putInt(Constants.EVENT_WIGLE_UPLOAD_PROGRESS_PAR_COUNT, (int) readbytes);
@@ -110,7 +110,7 @@ public class WigleUploader
 
 				String response = new String(data, 0, ct);
 
-				return response.indexOf("UPLOAD DONE") != -1;
+				return response.indexOf("UPLOAD DONE") != -1;  // catch return value from server
 				}
 					catch (Exception e)
 				{
