@@ -51,62 +51,68 @@ public class WigleUploader
 			{
 				Message msg;
 				Bundle b;
-		        URL url = new URL(dburl);
-		        HttpURLConnection conn = (HttpURLConnection)url.openConnection();
-		    	conn.setDoInput(true);
-		    	conn.setDoOutput(true);
-		    	conn.setUseCaches(false);
-		    	conn.setRequestMethod("POST");
-		    	conn.setRequestProperty("User-Agent","wardrive");
-			String usernamePassword = username + ":" + password;
-			String encodedUsernamePassword = Base64.encodeToString(usernamePassword.getBytes(), Base64.DEFAULT | Base64.NO_WRAP);
-			conn.setRequestProperty("Authorization", "Basic " + encodedUsernamePassword);
-		    	conn.setRequestProperty("Content-Type","multipart/form-data;boundary="+BOUNDARY);
-		    	conn.connect();
-		    	DataOutputStream dos = new DataOutputStream(conn.getOutputStream());
-			dos.writeBytes("--"+BOUNDARY+NL+"Content-Disposition: form-data; name=\"file\";filename=\"wardrive.kml\""+NL+"Content-Type: application/octet-stream"+NL+NL);
-		    	int ct;
-		    	long readbytes = 0;
-		    	long filelength = file.length();
-		    	byte[] buf = new byte[1240];
+				int ct;
+				long readbytes = 0;
+				long filelength = file.length();
+				byte[] buf = new byte[1240];
+
+				URL url = new URL(dburl);
+				HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+				conn.setDoInput(true);
+				conn.setDoOutput(true);
+				conn.setUseCaches(false);
+				conn.setRequestMethod("POST");
+				conn.setRequestProperty("User-Agent","wardrive");
+				String usernamePassword = username + ":" + password;
+				String encodedUsernamePassword = Base64.encodeToString(usernamePassword.getBytes(), Base64.DEFAULT | Base64.NO_WRAP);
+				conn.setRequestProperty("Authorization", "Basic " + encodedUsernamePassword);
+				conn.setRequestProperty("Content-Type","multipart/form-data;boundary="+BOUNDARY);
+				conn.connect();
+
+				DataOutputStream dos = new DataOutputStream(conn.getOutputStream());
+				dos.writeBytes("--"+BOUNDARY+NL+"Content-Disposition: form-data; name=\"file\";filename=\"wardrive.kml\""+NL+"Content-Type: application/octet-stream"+NL+NL);
 				BufferedInputStream fis = new BufferedInputStream(new FileInputStream(file), 1024);
-		    	while(fis.available() > 0)
-		    	{
-		    		ct = fis.read(buf);
-		    		dos.write(buf, 0, ct);
-		    		dos.flush();
-		    		
-		    		readbytes += ct;
-		    		msg = Message.obtain(message_handler, Constants.EVENT_WIGLE_UPLOAD_PROGRESS);
+
+				while(fis.available() > 0)
+				{
+					ct = fis.read(buf);
+					dos.write(buf, 0, ct);
+					dos.flush();
+					
+					readbytes += ct;
+					msg = Message.obtain(message_handler, Constants.EVENT_WIGLE_UPLOAD_PROGRESS);
 					b = new Bundle();
 					b.putInt(Constants.EVENT_WIGLE_UPLOAD_PROGRESS_PAR_COUNT, (int) readbytes/4*3);
 					b.putInt(Constants.EVENT_WIGLE_UPLOAD_PROGRESS_PAR_TOTAL, (int) filelength);
 					msg.setData(b);
 					message_handler.sendMessage(msg);
-		    	}
-		    	fis.close();
-			//dos.writeBytes(NL+"--"+BOUNDARY+NL+"Content-Disposition: form-data; name=\"Send\""+NL+NL+"Send");
-		    	dos.writeBytes(NL+"--"+BOUNDARY+"--"+NL);
-		    	dos.flush();
-		    	dos.close();
-		    	DataInputStream dis = new DataInputStream(conn.getInputStream());
-		    	byte[] data = new byte[10240];
-		    	ct = dis.read(data);
-		    	dis.close();
-		    	conn.disconnect();
+				}
 
-			msg = Message.obtain(message_handler, Constants.EVENT_WIGLE_UPLOAD_PROGRESS);
-			b = new Bundle();
-			b.putInt(Constants.EVENT_WIGLE_UPLOAD_PROGRESS_PAR_COUNT, (int) readbytes);
-			b.putInt(Constants.EVENT_WIGLE_UPLOAD_PROGRESS_PAR_TOTAL, (int) filelength);
-			msg.setData(b);
-			message_handler.sendMessage(msg);
+				fis.close();
+				//dos.writeBytes(NL+"--"+BOUNDARY+NL+"Content-Disposition: form-data; name=\"Send\""+NL+NL+"Send");  //not always necessary
+				dos.writeBytes(NL+"--"+BOUNDARY+"--"+NL);
+				dos.flush();
+				dos.close();
+				DataInputStream dis = new DataInputStream(conn.getInputStream());
+				byte[] data = new byte[10240];
+				ct = dis.read(data);
+				dis.close();
+				conn.disconnect();
 
-		    	String response = new String(data, 0, ct);
-			return response.indexOf("UPLOAD DONE") != -1;
-			}
-			catch (Exception e)
-			{
+				msg = Message.obtain(message_handler, Constants.EVENT_WIGLE_UPLOAD_PROGRESS);
+				b = new Bundle();
+				b.putInt(Constants.EVENT_WIGLE_UPLOAD_PROGRESS_PAR_COUNT, (int) readbytes);
+				b.putInt(Constants.EVENT_WIGLE_UPLOAD_PROGRESS_PAR_TOTAL, (int) filelength);
+				msg.setData(b);
+				message_handler.sendMessage(msg);
+
+				String response = new String(data, 0, ct);
+
+				return response.indexOf("UPLOAD DONE") != -1;
+				}
+					catch (Exception e)
+				{
+
 				Logger.getAnonymousLogger().severe(e.getMessage());
 				return false;
 			}
