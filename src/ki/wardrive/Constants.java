@@ -74,17 +74,17 @@ public class Constants
 
 	public static final int EVENT_KML_EXPORT_DONE = 0;
 
-	public static final int EVENT_NOTIFY_ERROR = EVENT_KML_EXPORT_DONE + 1;
+	public static final int EVENT_NOTIFY_ERROR = EVENT_KML_EXPORT_DONE + 1;  // 1
 
-	public static final int EVENT_SEND_TO_WIGLE_FILE_NOT_FOUND = EVENT_NOTIFY_ERROR + 1;
+	public static final int EVENT_SEND_TO_WIGLE_FILE_NOT_FOUND = EVENT_NOTIFY_ERROR + 1;  // 2
 
-	public static final int EVENT_SEND_TO_WIGLE_ERROR = EVENT_SEND_TO_WIGLE_FILE_NOT_FOUND + 1;
+	public static final int EVENT_SEND_TO_WIGLE_ERROR = EVENT_SEND_TO_WIGLE_FILE_NOT_FOUND + 1;  // 3
 	
-	public static final int EVENT_SEND_TO_WIGLE_OK = EVENT_SEND_TO_WIGLE_ERROR + 1;
+	public static final int EVENT_SEND_TO_WIGLE_OK = EVENT_SEND_TO_WIGLE_ERROR + 1;  // 4
 
-	public static final int EVENT_KML_EXPORT_PROGRESS = EVENT_SEND_TO_WIGLE_OK + 1;
+	public static final int EVENT_KML_EXPORT_PROGRESS = EVENT_SEND_TO_WIGLE_OK + 1;  // 5
 	
-	public static final int EVENT_WIGLE_UPLOAD_PROGRESS = EVENT_KML_EXPORT_PROGRESS + 1;
+	public static final int EVENT_WIGLE_UPLOAD_PROGRESS = EVENT_KML_EXPORT_PROGRESS + 1;  // 6
 	
 	public static final String EVENT_KML_EXPORT_PROGRESS_PAR_COUNT = "exported_count";
 	

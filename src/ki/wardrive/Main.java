@@ -264,8 +264,7 @@ public class Main extends MapActivity implements LocationListener
 			// Saved GPS location & zoom, init MapView
 			settings = getPreferences(MODE_PRIVATE);
 			settings_editor = settings.edit();
-			GeoPoint point = new GeoPoint(settings.getInt(Constants.LAST_LAT, Constants.DEFAULT_LAT), settings.getInt(
-					Constants.LAST_LON, Constants.DEFAULT_LON));
+			GeoPoint point = new GeoPoint(settings.getInt(Constants.LAST_LAT, Constants.DEFAULT_LAT), settings.getInt(Constants.LAST_LON, Constants.DEFAULT_LON));
 			mapview = (MapView) findViewById(R.id.mapview);
 			mapview.getController().animateTo(point);
 			mapview.getController().setZoom(settings.getInt(Constants.ZOOM_LEVEL, Constants.DEFAULT_ZOOM_LEVEL));
@@ -346,8 +345,7 @@ public class Main extends MapActivity implements LocationListener
 		try
 		{
 			if (location_manager != null)
-				location_manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, Constants.MAPS_GPS_EVENT_WAIT,
-						Constants.MAPS_GPS_EVENT_METERS, Main.this);
+				location_manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, Constants.MAPS_GPS_EVENT_WAIT, Constants.MAPS_GPS_EVENT_METERS, Main.this);
 		}
 		catch (Exception e)
 		{
@@ -1056,10 +1054,8 @@ public class Main extends MapActivity implements LocationListener
 
 							max_radius_for_quadrant = quadrant_w > quadrant_h ? quadrant_h / 2 : quadrant_w / 2;
 
-							zoom_divider = mapView.getZoomLevel() - Constants.QUADRANT_DOTS_SCALING_FACTOR
-									+ Constants.QUADRANT_DOTS_SCALING_CONSTANT;
-							max_radius_for_quadrant /= zoom_divider >= 0 ? Constants.QUADRANT_DOTS_SCALING_CONSTANT
-									: -zoom_divider;
+							zoom_divider = mapView.getZoomLevel() - Constants.QUADRANT_DOTS_SCALING_FACTOR + Constants.QUADRANT_DOTS_SCALING_CONSTANT;
+							max_radius_for_quadrant /= zoom_divider >= 0 ? Constants.QUADRANT_DOTS_SCALING_CONSTANT : -zoom_divider;
 
 							for (int x = 0; x < quadrants_x; x++)
 							{
@@ -1068,8 +1064,7 @@ public class Main extends MapActivity implements LocationListener
 									destroy_cursor(c);
 
 									top_left = mapView.getProjection().fromPixels(quadrant_w * x, quadrant_h * y);
-									bottom_right = mapView.getProjection().fromPixels(quadrant_w * x + quadrant_w,
-											quadrant_h * y + quadrant_h);
+									bottom_right = mapView.getProjection().fromPixels(quadrant_w * x + quadrant_w, quadrant_h * y + quadrant_h);
 
 									count = 0;
 									c = database
@@ -1089,9 +1084,7 @@ public class Main extends MapActivity implements LocationListener
 									}
 
 									if (count > 0)
-										draw_sized_item(canvas, mapView, new GeoPoint((int) (avg_lat * 1E6),
-												(int) (avg_lon * 1E6)), count > max_radius_for_quadrant ? max_radius_for_quadrant
-												: count);
+										draw_sized_item(canvas, mapView, new GeoPoint((int) (avg_lat * 1E6), (int) (avg_lon * 1E6)), count > max_radius_for_quadrant ? max_radius_for_quadrant : count);
 								}
 							}
 						}
