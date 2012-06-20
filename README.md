@@ -6,5 +6,5 @@ This Fork is expecially for the f3l wardrive database. Fixes and performance imp
 ## Reqirements
  * Needs: WiFi, GPS, Internet (and google maps library installed).
  * Needs a valid GPS location.
- * Needs a SDCard
+ * Needs an SDCard
  * WiFis exportable to KML format.
