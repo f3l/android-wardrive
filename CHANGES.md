@@ -1,0 +1,266 @@
+# Changelog
+
+## v1.0
+
+    * Scans for visible wireless networks and stores them in sqlite3 DB, in the
+      sdcard.
+    * Visualize networks around your position with maps.
+    * Needs GPS position found to work, either for maps and for scanning wifis.
+
+## v1.1
+
+    * Saves last position visited and resets it when application is restarted.
+      This will not make a scan for wifis, but stored ones will be visible on
+      the map anyway.
+
+    * Can change the meters span that triggers a scan, and the max wifis visible
+      on the map.
+      
+    * WiFis SSID now are displayed near the dots. This can be toggled by menu.
+    
+    * "Follow ME", can be disabled, but is not saved to preferences: at startup
+      it needs the position or it will remain in coords 0,0
+      
+## v1.2
+
+    * Introduced the quadrant view: many wifis in the same screen gets wrapped
+      on a bigger dot, still divided between red and green.
+      Should improve performance with big numbers (100+).
+      This is activated also only when on a zoom level far enough.
+    
+    * WiFis are updated in a better way. Before all the record was updated only
+      when a bigger level (signal strenght) was found. Now for that case only
+      "lan, lon, alt, level" are updated, while all other information are always
+      updated (frequency, capabilities, ssid...) when the wifi is detected,
+      even if ad worse level.
+      
+    * Changed localization method
+    
+## v1.3
+
+    * Bugfix: on quit application was halting unexpectedly
+
+## v1.4
+
+	* Added transparency to circles
+	
+	* Big circles: they don't take all the map when it's fully zoomed out
+	  (proportional scaling up).
+	  
+## v1.5
+
+    * Now the scanning is backed into a service independent from the action.
+      The service is stopped when clicking the "quit" menu entry.
+      (Something like G-Mon does)
+      
+## v1.6
+
+    * Errors shouldn't make the application to quit now. Instead they're
+      displayed briefly in a passive pop-up that hides in a short time.
+      
+    * New program icon.
+    
+    * Mapview now can be displayed with terrain also.
+    
+## v1.7
+
+	* The user can now decide if to display open or closed wifis, or both
+
+	* Start/Stop the service via a specific menu command and save that setting
+      to preferences.
+
+## v1.8
+
+    * The user can now delete the database completely (an empty file remains)
+
+## v1.9
+
+    * New Translations: Poland Language
+
+## v1.10
+
+	* Exportable KML files
+	
+	* "Export KML" moved to the top stack of the menu. The delete button should
+	  be theorically the less used one in the application and so moved in the
+	  "options" group.
+	  
+## v1.11
+
+    * GPS status is printed in toast message by the service when it changes.
+    
+## v1.12
+
+    * Previous had a Bad Google API KEy for certificate.
+    
+## v1.13
+
+    * Faster service and maps updates.
+
+## v2.0
+
+	* Send WiFis to online database http://wardrivedb.appstop.com/
+
+## v2.1
+
+	* Sends only the newly updated WiFis based on the last sync date.
+
+## v2.2
+
+	* Updates timestamps only if effectively updates any info in the record.
+	  This will prevent to send duplicate data on sync.
+
+## v2.3
+
+    * Lighter syncronization to server, sends smaller packets now (20 each).
+
+## v2.4
+
+    * Progress bar while sending to server.
+    
+## v2.5
+
+    * Sending to server now is never started more than once, remains in
+      background, and the progress bar can be resumed by choosing "send" again.
+    
+## v2.6
+
+    * Force quit of the application when calling quit.
+      This should solve the issue about drawing battery even when closing the app.
+      
+## v2.7
+
+    * Also shows closed wifis count on statistics.
+    * Shows last running dates for application and service on statistics.
+    * Show last catched wifis since the last service run on statistics.
+
+## v2.8
+
+    * XML export now has colored dots depending of WiFis security methods.
+
+## v2.9
+
+	* Sending to online database now only sends open wifis.
+	* Asks the user to send all WiFis to online db, or to send only new ones.
+
+## v2.10
+
+	* Shows yellow for WEP wifis.
+	* When service is stopped or started only a toast is displayed, and not any
+	  other notifications (users couldn't delete the notification).
+
+## v2.11
+
+	* KML export now writes also timestamp
+	
+## v2.12
+
+	* Sounds and vibrates with notification (auto-cancelable) when spotting a new
+	  WiFi. Doesn't notify when a WiFi is only updated, only when newly added.
+	  
+## v2.13
+
+    * Service can be better controlled by either diabling the notifications or
+      by setting the GPS query interval.
+      
+      
+## v2.14
+
+    * Service start stop wasn't correctly notificating with toast messaged. 
+
+## v2.14
+
+    * Unexpected service behaviour 
+
+## v2.16
+
+    * Added readable date in the KML export
+
+## v2.17
+
+    * Added a regexp filter for visible wifis
+
+## v2.18
+
+    * Android SDK version required grows from 3 to 4, Now supports any screen format
+
+## v2.19
+
+    * Fixed bug: couldn't write new files on sdcard, corrected permissions.
+    
+## v3.0
+
+    * All actually visible wifis can now be listed
+    * Possible operations on single item: delete
+
+## v3.1
+
+	* Added the scale bar
+
+## v3.2
+
+	* Adding support for posting directly to wigle.net
+	
+## v3.3
+
+	* Added chinese translations
+
+## v3.4
+
+	* Added progress bar for KML exporting
+
+## v3.5
+
+	* Added translations for German
+	* Updated translations for Polish
+	* Wifi spots are dimensioned parametrically from the signal level they have been scanned
+	
+## v3.6
+    
+    * Added translations for French
+    
+## v3.7
+
+	* Added notification status for the background service
+	* KML export now differentiates between open, wep, and other
+	
+## v3.8
+
+	* Wifi APs are not proportioned to the screen size
+	* Added Russian translations
+	* Dismantling online application
+	
+## v3.9
+
+	* Added accuracy filter: wifi scannings work only on accuracy less than 50 meters
+	* Added Spanish translations
+	
+## v3.10
+
+	* Added progress dialog for wigle uploading
+
+## v3.11
+
+	* Added Czech translations
+
+## v3.12
+	
+	* New preferences screen
+	* WEP wifis are differentiated on view selection
+	
+## v3.13
+
+	* Fixed Issue #84: "Starting multiple times..."
+	* Feature (Issue #83): "RSSI and accuracy filters". Can now specify accuracy levels of GPS in meters.
+	
+## v3.14
+
+	* Reverted issue #84, was causing too much troubles
+	
+## v4.0
+
+    * Adapted to API level 8
+    
+## v4.1
+
+    * KML export can now export only the new scanned WiFis
