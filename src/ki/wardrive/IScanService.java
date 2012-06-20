@@ -20,15 +20,68 @@ package ki.wardrive;
 
 public interface IScanService
 {
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean getNotificationsEnabled();
+	
+	/**
+	 * 
+	 * @param notificationsEnabled
+	 */
 	public void setNotificationsEnabled(boolean notificationsEnabled);
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public int getGpsSeconds();
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public int getGpsMeters();
+	
+	/**
+	 * 
+	 * @param s
+	 * @param m
+	 */
 	public void setGpsTimes(int s, int m);
+	
+	/**
+	 * 
+	 */
 	public void start_services();
+	
+	/**
+	 * 
+	 */
 	public void stop_services();
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public int getGpsAccuracy();
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public int getWiFiMinStrength();
+	
+	/**
+	 * 
+	 * @param x
+	 */
 	public void setGpsAccuracy(int x);
+	
+	/**
+	 * 
+	 * @param x
+	 */
 	public void setWiFiMinStrength(int x);
 }

@@ -94,7 +94,22 @@ public class KMLExport
 	
 	private static final DateFormat df = DateFormat.getDateTimeInstance();
 
-	public static boolean export(SQLiteDatabase database, File file, Handler message_handler, boolean export_all, long tstamp)
+	
+	/**
+	 * Exports Database to KML-File
+	 * 
+	 * @param database The Database connection
+	 * @param file The File to be written
+	 * @param message_handler The message_handler
+	 * @param export_all Boolean if weather all may be exported or not
+	 * @param tstamp Timestamp of the Export
+	 * @return true if ok fale if error
+	 */
+	public static boolean export(SQLiteDatabase database, 
+								File file, 
+								Handler message_handler, 
+								boolean export_all, 
+								long tstamp)
 	{
 		synchronized (LOCK)
 		{
@@ -108,14 +123,14 @@ public class KMLExport
 				try
 				{
 					fw = new FileWriter(file);
-					fw.append(ROOT_START);
+					fw.append(ROOT_START); // XML-Header
 	
 					Bundle b;
 					Message msg;
 					Cursor c = null, c2 = null, c3 = null;
 					try
 					{
-						fw.append(FOLDER_1);
+						fw.append(FOLDER_1); // Open Wifis
 	
 						if (export_all)
 						{
@@ -236,11 +251,17 @@ public class KMLExport
 		return false;
 	}
 
+	/**
+	 * 
+	 * @param c
+	 * @param fw
+	 * @throws IOException
+	 */
 	private static void write_mark(Cursor c, FileWriter fw) throws IOException
 	{
 		String cap = c.getString(2);
-		boolean open = cap == null || cap.length() == 0;
-		boolean wep = cap != null && cap.contains("WEP");
+		boolean open = ( cap == null || cap.length() == 0);
+		boolean wep = ( cap != null && cap.contains("WEP"));
 		fw.append(MARK_START);
 		fw.append(NAME_START);
 		fw.append(c.getString(1)); // SSID
@@ -269,6 +290,10 @@ public class KMLExport
 		fw.append(MARK_END);
 	}
 
+	/**
+	 * Destroys the Cursor
+	 * @param c Cursor to be destroyed
+	 */
 	private static void destroy_cursor(Cursor c)
 	{
 		if (c != null)

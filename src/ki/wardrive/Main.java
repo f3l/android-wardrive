@@ -219,9 +219,16 @@ public class Main extends MapActivity implements LocationListener
         wigle_password = prefs.getString("wiglePassword", "");
         kml_export_path = prefs.getString("kmlExportPath", "");
         String sGpsAccuracy = prefs.getString("gpsAccuracy", "50");
-		try{gps_accuracy = Integer.parseInt(sGpsAccuracy);}catch(NumberFormatException e){}
+		try
+		{
+			gps_accuracy = Integer.parseInt(sGpsAccuracy);
+		} catch(NumberFormatException e){System.out.println("Error parsing Number");}
+		
         String swifi_min_strength = prefs.getString("gpsAccuracy", "50");
-		try{wifi_min_strength = Integer.parseInt(swifi_min_strength);}catch(NumberFormatException e){}
+		try
+		{
+			wifi_min_strength = Integer.parseInt(swifi_min_strength);
+		} catch(NumberFormatException e){System.out.println("Error parsing Number");}
         		
         
         // Update overlays booleans - Labels

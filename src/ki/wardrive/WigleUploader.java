@@ -42,8 +42,15 @@ public class WigleUploader
 
 	public static boolean upload(String username, String password, String dburl, File file, Handler message_handler)
 	{
-		if (username == null || username.length() == 0 || password == null || password.length() == 0 || dburl == null || dburl.length() == 0)
+		if (username == null || 
+			username.length() == 0 || 
+			password == null || 
+			password.length() == 0 || 
+			dburl == null || 
+			dburl.length() == 0)
+		{
 			return false;
+		}
 		
 		synchronized (LOCK)
 		{
@@ -111,10 +118,9 @@ public class WigleUploader
 				String response = new String(data, 0, ct);
 
 				return response.indexOf("UPLOAD DONE") != -1;  // catch return value from server
-				}
-					catch (Exception e)
-				{
-
+			}
+			catch (Exception e)
+			{
 				Logger.getAnonymousLogger().severe(e.getMessage());
 				return false;
 			}
