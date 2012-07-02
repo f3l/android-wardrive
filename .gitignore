@@ -2,3 +2,4 @@ bin/
 gen/
 target/
 local.properties
+Makefile

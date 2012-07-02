@@ -2,7 +2,7 @@
 
 if [ "$1" == "cleanup" ] ; then
 	echo "Cleaning up ..."
-	rm -fv local.properties
+	rm -fv local.properties Makefile
 	exit 0
 fi
 
@@ -22,9 +22,13 @@ for dp in /{opt,usr/share,tmp}/android-sdk{-linux,} ; do
 done
 test -e "$ANDROID_SDK/SDK Readme.txt" && echo "Using '$ANDROID_SDK'" || (echo "No Android SDK found!" ; exit 1)
 
-# get key stuff
+echo "Searching for signing key ..."
+ANDROID_KEY=`echo ~/.android/debug.keystore`
+test -e "$ANDROID_KEY" && echo "Using '$ANDROID_KEY'" || (echo "No signing key found!" ; exit 1)
 
 echo
 echo "Generating files ..."
 echo "  -> local.properties"
 cat local.properties.in | sed -e "s#%SDK_DIR%#$ANDROID_SDK#" > local.properties
+echo "  -> Makefile"
+cat Makefile.in | sed -e "s#%SDK_DIR%#$ANDROID_SDK#" -e "s#%KEYSTORE%#$ANDROID_KEY#" > Makefile

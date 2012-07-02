@@ -1,0 +1,25 @@
+SDK_DIR=%SDK_DIR%
+SDK_TOOLS=${SDK_DIR}/tools
+ZIPALIGN=${SDK_TOOLS}/zipalign
+KEYSTORE=%KEYSTORE%
+
+.PHONY: clean all bin/wardrive-release-unsigned.apk
+
+all: bin/wardrive-release-signed.apk
+
+clean:
+	rm -rvf ./bin/ ./gen/
+
+#bin/wardrive-release-unsigned.apk:
+#	touch bin/wardrive-release-unsigned.apk
+
+bin/wardrive-release-unsigned.apk:
+	ant release
+
+bin/wardrive-release-signed-unaligned.apk: bin/wardrive-release-unsigned.apk
+	cp $< $@
+	jarsigner -verbose -sigalg MD5withRSA -digestalg SHA1 -keystore ${KEYSTORE} -storepass android -keypass android $@ android || (rm $@ ; false)
+
+bin/wardrive-release-signed.apk: bin/wardrive-release-signed-unaligned.apk
+	${ZIPALIGN} -f -v 4 $< $@
+	echo "--> '$@' created!"
