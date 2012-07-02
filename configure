@@ -1,0 +1,30 @@
+#!/bin/sh
+
+if [ "$1" == "cleanup" ] ; then
+	echo "Cleaning up ..."
+	rm -fv local.properties
+	exit 0
+fi
+
+echo -n "Searching for ANT ... "
+which ant > /dev/null 2>&1 && echo "FOUND" || (echo "No ANT found!" ; exit 1)
+
+echo "Searching for Android SDK ..."
+for dp in /{opt,usr/share,tmp}/android-sdk{-linux,} ; do
+	echo -n "  TESTING '$dp' ... "
+	if [ -d "$dp" ] && [ -e "$dp/SDK Readme.txt" ] ; then
+		echo "FOUND"
+		ANDROID_SDK="$dp"
+		break
+	else
+		echo "NO"
+	fi
+done
+test -e "$ANDROID_SDK/SDK Readme.txt" && echo "Using '$ANDROID_SDK'" || (echo "No Android SDK found!" ; exit 1)
+
+# get key stuff
+
+echo
+echo "Generating files ..."
+echo "  -> local.properties"
+cat local.properties.in | sed -e "s#%SDK_DIR%#$ANDROID_SDK#" > local.properties
