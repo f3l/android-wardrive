@@ -1,17 +1,16 @@
 SDK_DIR=%SDK_DIR%
 SDK_TOOLS=${SDK_DIR}/tools
+SDK_PTOOLS=${SDK_DIR}/platform-tools
 ZIPALIGN=${SDK_TOOLS}/zipalign
+ADB=${SDK_PTOOLS}/adb
 KEYSTORE=%KEYSTORE%
 
-.PHONY: clean all bin/wardrive-release-unsigned.apk
+.PHONY: clean all install bin/wardrive-release-unsigned.apk
 
 all: bin/wardrive-release-signed.apk
 
 clean:
 	rm -rvf ./bin/ ./gen/
-
-#bin/wardrive-release-unsigned.apk:
-#	touch bin/wardrive-release-unsigned.apk
 
 bin/wardrive-release-unsigned.apk:
 	ant release
@@ -23,3 +22,7 @@ bin/wardrive-release-signed-unaligned.apk: bin/wardrive-release-unsigned.apk
 bin/wardrive-release-signed.apk: bin/wardrive-release-signed-unaligned.apk
 	${ZIPALIGN} -f -v 4 $< $@
 	echo "--> '$@' created!"
+
+install: bin/wardrive-release-signed.apk
+	adb start-server
+	adb install -r $<

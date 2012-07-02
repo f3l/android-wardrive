@@ -1,0 +1,5 @@
+How to start the emulator:
+
+android create avd -t 2 -n avd2 -c 256M
+# --> .android/avd/
+emulator -avd avd2
